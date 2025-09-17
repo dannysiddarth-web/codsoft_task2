@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portfolio - Learn Web Development</title>
+    <style>
+        /* ===== BASIC RESET ===== */
+        /* This removes default spacing from all elements */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ===== BODY STYLES ===== */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6; /* Makes text easier to read */
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        /* ===== HEADER SECTION ===== */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            position: fixed; /* Stays at top when scrolling */
+            width: 100%;
+            top: 0;
+            z-index: 1000; /* Makes sure it stays on top */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Navigation container */
+        nav {
+            display: flex;
+            justify-content: space-between; /* Logo left, menu right */
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Logo styling */
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        /* Navigation menu */
+        .nav-menu {
+            display: flex;
+            list-style: none; /* Removes bullet points */
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease; /* Smooth color change */
+        }
+
+        /* Hover effect for menu items */
+        .nav-menu a:hover {
+            background-color: #3498db;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem 4rem; /* Extra top padding for fixed header */
+            min-height: 100vh; /* Full screen height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: slideInFromTop 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: slideInFromBottom 1s ease-out;
+        }
+
+        /* Button styling */
+        .btn {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            animation: slideInFromBottom 1s ease-out 0.5s both;
+        }
+
+        /* Button hover effect */
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px); /* Lifts button up slightly */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes slideInFromTop {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInFromBottom {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about {
+            padding: 4rem 2rem;
+            background-color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two equal columns */
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #3498db;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            background-color: #3498db;
+            height: 300px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* ===== SKILLS SECTION ===== */
+        .skills {
+            padding: 4rem 2rem;
+            background-color: #ecf0f1;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        /* Card hover effect */
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #3498db;
+        }
+
+        .skill-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .skill-card p {
+            color: #7f8c8d;
+        }
+
+        /* ===== PROJECTS SECTION ===== */
+        .projects {
+            padding: 4rem 2rem;
+            background-color: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-image {
+            height: 200px;
+            background-color: #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+        }ð
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .project-info p {
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            padding: 4rem 2rem;
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .contact p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item span {
+            font-size: 1.2rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: #1a252f;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        /* Styles for tablets and mobile phones */
+        @media (max-width: 768px) {
+            /* Hide navigation menu on mobile */
+            .nav-menu {
+                display: none;
+            }
+            
+            /* Smaller hero text */
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            /* Stack about section vertically */
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            /* Reduce padding on mobile */
+            .hero, .about, .skills, .projects, .contact {
+                padding: 3rem 1rem;
+            }
+            
+            /* Stack contact items vertically */
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+    <header>
+        <nav>
+            <div class="logo">StudentDev</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Hi, I'm Danny Siddarth!</h1>
+            <p>Learning HTML, CSS, and JavaScript to build amazing websites. This is my practice landing page!</p>
+            <a href="#about" class="btn">Learn About Me</a>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>My Learning Journey</h3>
+                    <p>I'm currently studying web development and practicing my skills by building projects like this landing page. I'm learning how to structure HTML, style with CSS, and make websites interactive.</p>
+                    <p>This page demonstrates fundamental concepts like responsive design, CSS Grid, Flexbox, animations, and proper HTML structure.</p>
+                </div>
+                <div class= pic.jpeg >
+                    <p>student learning<br>web development</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SKILLS SECTION ===== -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills I'm Learning</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">🌐</div>
+                    <h3>HTML</h3>
+                    <p>Learning proper HTML structure, semantic elements, and accessibility best practices.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🎨</div>
+                    <h3>CSS</h3>
+                    <p>Practicing layouts with Flexbox and Grid, animations, and responsive design principles.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">⚡</div>
+                    <h3>JavaScript</h3>
+                    <p>Starting to learn programming concepts and how to make websites interactive.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">📱</div>
+                    <h3>Responsive Design</h3>
+                    <p>Making sure websites look good on all devices - desktop, tablet, and mobile.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ 
+    <!-- ===== CONTACT SECTION ===== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Let's Connect!</h2>
+            <p>I'm always excited to connect with other students and developers</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <p>danysiddarth@gmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <span>🐱</span>
+                    <p>GitHub: /dannysiddarth</p>
+                </div>
+                <div class="contact-item">
+                    <span>💼</span>
+                    <p>LinkedIn: /in/dannysiddarth</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <p>&copy; 2025 StudentDev. Built while learning web development!</p>
+    </footer>
+</body>
+</html>
